@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>은행</title>
+</head>
+<body>
+    <!-- 타입을 text로 변경 -->
+    <input type="text" id="num1" placeholder="숫자" size="4"> 일 &nbsp; &nbsp;
+    <input type="text" id="num2" placeholder="숫자" size="4"> 시간 &nbsp; &nbsp;
+    <input type="text" id="num3" placeholder="숫자" size="4"> 분
+    <br>
+    <input type="text" id="num4" placeholder="숫자" size="4"> 일 &nbsp; &nbsp;
+    <input type="text" id="num5" placeholder="숫자" size="4"> 시간 &nbsp; &nbsp; 
+    <input type="text" id="num6" placeholder="숫자" size="4"> 분 &nbsp; &nbsp; &nbsp; &nbsp; 
+    
+    <button onclick="calculate()">계산</button>
+
+    <p>결과 : &nbsp;&nbsp; <span id="result" style="color: blue; font-size: 30px;">0</span></p>
+
+    <script>
+        function calculate() {
+            // 1. 텍스트 박스의 문자열 값을 가져옴
+            const str1 = document.getElementById('num1').value;
+            const str2 = document.getElementById('num2').value;
+            const str3 = document.getElementById('num3').value;
+            const str4 = document.getElementById('num4').value;
+            const str5 = document.getElementById('num5').value;
+            const str6 = document.getElementById('num6').value;
+
+            // 2. 숫자로 변환 (값이 숫자가 아니면 NaN이 됨)
+            const n1 = parseInt(str1);
+            const n2 = parseInt(str2);
+            const n3 = parseInt(str3);
+            const n4 = parseInt(str4);
+            const n5 = parseInt(str5);
+            const n6 = parseInt(str6);
+
+            // 3. 유효성 검사 (둘 다 숫자일 때만 계산)
+            if (isNaN(n1) || isNaN(n2) || isNaN(n3) || isNaN(n4) || isNaN(n6) || isNaN(n6)) {
+                alert("숫자만 입력해주세요!");
+                return;
+            }
+
+            // 4. 결과 출력
+            var n33 = (n3 + n6) % 60;
+            var n03 = String(n33).padStart(2, '0');
+            var n22 = (Math.floor((n3 + n6) / 60) + n2 + n5) % 24;
+            var n02 = String(n22).padStart(2, '0');
+            var n11 = Math.floor((Math.floor((n3 + n6) / 60) + n2 + n5) / 24) + n1 + n4;    
+            document.getElementById('result').innerText = n11 + "일  " + n02 + " : " + n03;
+        }
+    </script>
+
+</body>
+</html>
