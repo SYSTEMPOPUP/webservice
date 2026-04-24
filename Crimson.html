@@ -46,7 +46,6 @@
 	<br>
 	<br>
 	<br>
-	<br>
 
 	    <!-- 타입을 text로 변경 -->
     <input type="text" id="num10" placeholder="할일" size="10"> &nbsp; &nbsp;	
@@ -68,7 +67,6 @@
 	<br>
 	<br>
 	<br>
-	<br>
 
 	    <!-- 타입을 text로 변경 -->
     <input type="text" id="num20" placeholder="할일" size="10"> &nbsp; &nbsp;	
@@ -84,9 +82,46 @@
     <input type="text" id="num26" value="00" size="4"> 분 &nbsp; &nbsp; &nbsp; &nbsp; 
     
     <button onclick="calculate2()" class="button">계산</button>
-
-
     <p>결과 : &nbsp;&nbsp; <span id="result2" style="color: blue; font-size: 30px;">0</span></p>
+	
+	<br>
+	<br>
+	<br>
+
+	    <!-- 타입을 text로 변경 -->
+    <input type="text" id="num30" placeholder="할일" size="10"> &nbsp; &nbsp;	
+    <br>	
+    <span> 현재 시간 : </span> &nbsp;
+    <input type="text" id="num31" placeholder="숫자" size="4"> 일 &nbsp; &nbsp;
+    <input type="text" id="num32" placeholder="숫자" size="4"> 시간 &nbsp; &nbsp;
+    <input type="text" id="num33" placeholder="숫자" size="4"> 분
+    <br>
+    <span> 은행 시간 : </span> &nbsp;
+    <input type="text" id="num34" placeholder="숫자" size="4"> 일 &nbsp; &nbsp;
+    <input type="text" id="num35" placeholder="숫자" size="4"> 시간 &nbsp; &nbsp; 
+    <input type="text" id="num36" value="00" size="4"> 분 &nbsp; &nbsp; &nbsp; &nbsp; 
+    
+    <button onclick="calculate3()" class="button">계산</button>
+    <p>결과 : &nbsp;&nbsp; <span id="result3" style="color: blue; font-size: 30px;">0</span></p>
+	<br>
+	<br>
+	<br>
+
+	    <!-- 타입을 text로 변경 -->
+    <input type="text" id="num40" placeholder="할일" size="10"> &nbsp; &nbsp;	
+    <br>	
+    <span> 현재 시간 : </span> &nbsp;
+    <input type="text" id="num41" placeholder="숫자" size="4"> 일 &nbsp; &nbsp;
+    <input type="text" id="num42" placeholder="숫자" size="4"> 시간 &nbsp; &nbsp;
+    <input type="text" id="num43" placeholder="숫자" size="4"> 분
+    <br>
+    <span> 은행 시간 : </span> &nbsp;
+    <input type="text" id="num44" placeholder="숫자" size="4"> 일 &nbsp; &nbsp;
+    <input type="text" id="num45" placeholder="숫자" size="4"> 시간 &nbsp; &nbsp; 
+    <input type="text" id="num46" value="00" size="4"> 분 &nbsp; &nbsp; &nbsp; &nbsp; 
+    
+    <button onclick="calculate4()" class="button">계산</button>
+    <p>결과 : &nbsp;&nbsp; <span id="result4" style="color: blue; font-size: 30px;">0</span></p>
 
     <script>
         function calculate0() {
@@ -233,6 +268,103 @@
             document.getElementById('result2').innerText = n11 + "일  " + n02 + " : " + n03;
         }
 
+        function calculate3() {
+            // 1. 텍스트 박스의 문자열 값을 가져옴
+            const str1 = document.getElementById('num31').value;
+            const str2 = document.getElementById('num32').value;
+            const str3 = document.getElementById('num33').value;
+            const str4 = document.getElementById('num34').value;
+            const str5 = document.getElementById('num35').value;
+            const str6 = document.getElementById('num36').value;
+
+            // 2. 숫자로 변환 (값이 숫자가 아니면 NaN이 됨)
+            n1 = parseInt(str1);
+            n2 = parseInt(str2);
+            n3 = parseInt(str3);
+            n4 = parseInt(str4);
+            n5 = parseInt(str5);
+            n6 = parseInt(str6);
+
+            if (isNaN(n3))
+            {
+                        n3 = 0;
+                        document.getElementById('num33').value = 0;
+            }
+	if (isNaN(n4))
+            {           
+                        n4 = 0;
+                        document.getElementById('num34').value = 0;
+            }
+            if (isNaN(n6))
+            {
+                        n6 = 0;
+                        document.getElementById('num36').value = 0;
+            }
+			
+            // 3. 유효성 검사 (둘 다 숫자일 때만 계산)
+            if (isNaN(n1) || isNaN(n2) || isNaN(n5)) {
+                alert("숫자만 입력해주세요!");
+                return;
+            }
+
+            // 4. 결과 출력
+            var n33 = (n3 + n6) % 60;
+            var n03 = String(n33).padStart(2, '0');
+            var n22 = (Math.floor((n3 + n6) / 60) + n2 + n5) % 24;
+            var n02 = String(n22).padStart(2, '0');
+            var n11 = Math.floor((Math.floor((n3 + n6) / 60) + n2 + n5) / 24) + n1 + n4;    
+            document.getElementById('result3').innerText = n11 + "일  " + n02 + " : " + n03;
+        }		
+
+
+        function calculate4() {
+            // 1. 텍스트 박스의 문자열 값을 가져옴
+            const str1 = document.getElementById('num41').value;
+            const str2 = document.getElementById('num42').value;
+            const str3 = document.getElementById('num43').value;
+            const str4 = document.getElementById('num44').value;
+            const str5 = document.getElementById('num45').value;
+            const str6 = document.getElementById('num46').value;
+
+            // 2. 숫자로 변환 (값이 숫자가 아니면 NaN이 됨)
+            n1 = parseInt(str1);
+            n2 = parseInt(str2);
+            n3 = parseInt(str3);
+            n4 = parseInt(str4);
+            n5 = parseInt(str5);
+            n6 = parseInt(str6);
+
+            if (isNaN(n3))
+            {
+                        n3 = 0;
+                        document.getElementById('num43').value = 0;
+            }
+	if (isNaN(n4))
+            {           
+                        n4 = 0;
+                        document.getElementById('num44').value = 0;
+            }
+            if (isNaN(n6))
+            {
+                        n6 = 0;
+                        document.getElementById('num46').value = 0;
+            }
+			
+            // 3. 유효성 검사 (둘 다 숫자일 때만 계산)
+            if (isNaN(n1) || isNaN(n2) || isNaN(n5)) {
+                alert("숫자만 입력해주세요!");
+                return;
+            }
+
+            // 4. 결과 출력
+            var n33 = (n3 + n6) % 60;
+            var n03 = String(n33).padStart(2, '0');
+            var n22 = (Math.floor((n3 + n6) / 60) + n2 + n5) % 24;
+            var n02 = String(n22).padStart(2, '0');
+            var n11 = Math.floor((Math.floor((n3 + n6) / 60) + n2 + n5) / 24) + n1 + n4;    
+            document.getElementById('result4').innerText = n11 + "일  " + n02 + " : " + n03;
+        }
+		
     </script>
 
 </body>
